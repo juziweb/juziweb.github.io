@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>python上月,本月,上周通用方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="前言&amp;emsp;&amp;emsp;此类函数是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。喜欢的可以进行收藏！&amp;emsp;&amp;emsp;之前有写一个js的日期函数，刚好在写后台的时候又用到了上周，上月，本月，所有就又写了个函数，后期可能还会加上近七天，30天的日期方法">
+<meta name="keywords" content="上月,上周,本月,python,日期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python上月,本月,上周通用方法">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/python上月-本月-上周通用方法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此类函数是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。喜欢的可以进行收藏！&amp;emsp;&amp;emsp;之前有写一个js的日期函数，刚好在写后台的时候又用到了上周，上月，本月，所有就又写了个函数，后期可能还会加上近七天，30天的日期方法">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="python上月,本月,上周通用方法">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此类函数是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。喜欢的可以进行收藏！&amp;emsp;&amp;emsp;之前有写一个js的日期函数，刚好在写后台的时候又用到了上周，上月，本月，所有就又写了个函数，后期可能还会加上近七天，30天的日期方法">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,152 +164,194 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python上月-本月-上周通用方法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
+    <h1 class="article-title" itemprop="name">
+      python上月,本月,上周通用方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/12/04/python上月-本月-上周通用方法/" class="archive-article-date">
+  	<time datetime="2017-12-04T12:50:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此类函数是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。喜欢的可以进行收藏！<br>&emsp;&emsp;之前有写一个js的日期函数，刚好在写后台的时候又用到了上周，上月，本月，所有就又写了个函数，后期可能还会加上近七天，30天的日期方法</p>
+<a id="more"></a>
+<h4 id="废话不多说，直接贴代码"><a href="#废话不多说，直接贴代码" class="headerlink" title="废话不多说，直接贴代码"></a>废话不多说，直接贴代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">Created on 2017年12月04日</span></span><br><span class="line"><span class="string">@author: 橘色橙子 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line">import calendar</span><br><span class="line">import time</span><br><span class="line">import datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class get_day_list(object):</span><br><span class="line">    def __init__(self, day_type=None, data_type=None):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :param day_type: 需要返回的数据类型，</span></span><br><span class="line"><span class="string">        上月：last_month</span></span><br><span class="line"><span class="string">        上周：week </span></span><br><span class="line"><span class="string">        本月：month </span></span><br><span class="line"><span class="string">        今天： 可不传</span></span><br><span class="line"><span class="string">        :param data_type: 需要返回的日期数据，是全部的列表还是，只需要最大和最小；</span></span><br><span class="line"><span class="string">        列出所有日期：list_all</span></span><br><span class="line"><span class="string">        只需要最大和最小： 可不传，或者传 min</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        self.day_type = day_type</span><br><span class="line">        self.data_type = data_type</span><br><span class="line">        self.return_data = list()</span><br><span class="line">        self.day_now = time.localtime()</span><br><span class="line">        self.time_format_one = <span class="string">'%d-%02d-%02d'</span></span><br><span class="line">        self.time_format_two = <span class="string">'%Y-%m-%d'</span></span><br><span class="line"></span><br><span class="line">    def list_day(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        根据不同的日期选择进行，返回数据</span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> self.day_type == <span class="string">'last_month'</span>:</span><br><span class="line">            <span class="keyword">if</span> self.day_now.tm_mon == 1:</span><br><span class="line">                day_year = self.day_now.tm_year - 1</span><br><span class="line">                day_month = 12</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                day_year = self.day_now.tm_year</span><br><span class="line">                day_month = self.day_now.tm_mon - 1</span><br><span class="line">            <span class="comment"># 如果是1月则年份减一，月份变成12月</span></span><br><span class="line">            self.type_month(day_year, day_month)</span><br><span class="line">        <span class="keyword">elif</span> self.day_type == <span class="string">"week"</span>:</span><br><span class="line">            self.type_week()</span><br><span class="line">        <span class="keyword">elif</span> self.day_type == <span class="string">'month'</span>:</span><br><span class="line">            day_now = time.localtime()</span><br><span class="line">            day_year = day_now.tm_year</span><br><span class="line">            day_month = day_now.tm_mon</span><br><span class="line">            self.type_month(day_year, day_month)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.return_data.append(time.strftime(self.time_format_two))</span><br><span class="line">            self.return_data.append(time.strftime(self.time_format_two))</span><br><span class="line">        <span class="built_in">return</span> self.return_data</span><br><span class="line"></span><br><span class="line">    def get_Week_DAY(self, x):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :param x: 传入获取星期几， 1是周一，7是周日</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        one_day = (datetime.datetime.today() - datetime.timedelta(days=time.localtime().tm_wday + x)).strftime(</span><br><span class="line">            self.time_format_two)</span><br><span class="line">        <span class="built_in">return</span> one_day</span><br><span class="line"></span><br><span class="line">    def get_one_day(self, day_year, day_month, x):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :param day_year: 日期的年份</span></span><br><span class="line"><span class="string">        :param day_month: 日期的月份</span></span><br><span class="line"><span class="string">        :param x: 日期的天数</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        one_day = self.time_format_one % (day_year, day_month, x)</span><br><span class="line">        <span class="built_in">return</span> one_day</span><br><span class="line"></span><br><span class="line">    def type_month(self, day_year, day_month):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :param day_year: 传入年份</span></span><br><span class="line"><span class="string">        :param day_month: 传入月份</span></span><br><span class="line"><span class="string">        :return: 返回值类型是list_all则返回所有列表，否则返回最大和最小</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        weekday, monthRange = calendar.monthrange(day_year, day_month)</span><br><span class="line">        <span class="keyword">if</span> self.data_type == <span class="string">'list_all'</span>:</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(1, monthRange + 1):</span><br><span class="line">                self.return_data.append(self.get_one_day(day_year, day_month, x))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.return_data.append(self.get_one_day(day_year, day_month, 1))</span><br><span class="line">            self.return_data.append(self.get_one_day(day_year, day_month, monthRange))</span><br><span class="line"></span><br><span class="line">    def type_week(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :return: 返回值类型是list_all则返回所有列表，否则返回最大和最小</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> self.data_type == <span class="string">'list_all'</span>:</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(1, 8)[::-1]:</span><br><span class="line">                self.return_data.append(self.get_Week_DAY(x))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.return_data.append(self.get_Week_DAY(7))</span><br><span class="line">            self.return_data.append(self.get_Week_DAY(1))</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">上月</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">上周</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">本月</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日期</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/04/python上月-本月-上周通用方法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/12/06/firewall-防火墙命令相关/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          firewall-防火墙命令相关
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/29/极光推送/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">极光推送</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -327,8 +374,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

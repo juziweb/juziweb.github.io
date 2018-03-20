@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>极光推送 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="1&amp;gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。&amp;nbsp;&amp;nbsp;此推送方法是一个简单的类，本人自行创作，如果Copy请大佬们注明出处，谢谢！">
+<meta name="keywords" content="推送,极光">
+<meta property="og:type" content="article">
+<meta property="og:title" content="极光推送">
+<meta property="og:url" content="http://yoursite.com/2017/11/29/极光推送/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1&amp;gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。&amp;nbsp;&amp;nbsp;此推送方法是一个简单的类，本人自行创作，如果Copy请大佬们注明出处，谢谢！">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="极光推送">
+<meta name="twitter:description" content="1&amp;gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。&amp;nbsp;&amp;nbsp;此推送方法是一个简单的类，本人自行创作，如果Copy请大佬们注明出处，谢谢！">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,152 +164,181 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-极光推送" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      极光推送
+    </h1>
+  
+
+        
+        <a href="/2017/11/29/极光推送/" class="archive-article-date">
+  	<time datetime="2017-11-29T08:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-gt-在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。"><a href="#1-gt-在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。" class="headerlink" title="1&gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。"></a>1&gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。</h3><p>&nbsp;&nbsp;此推送方法是一个简单的类，本人自行创作，如果Copy请大佬们注明出处，谢谢！<br><a id="more"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">Created on 2017年11月29日</span></span><br><span class="line"><span class="string">@author: nice丶柠檬</span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line">from app import Config</span><br><span class="line">import jpush</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class push_client(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        初始化链接类，创建一个推送连接</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        self._jpush = jpush.JPush(Config.app_key, Config.master_secret)</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        Config.app_key:  app 极光账号，本人从app配置文件导入</span></span><br><span class="line"><span class="string">        Config.master_secret: 极光密码，本人从app配置文件导入</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        self.push = self._jpush.create_push()</span><br><span class="line">        self._jpush.set_logging(<span class="string">'DEBUG'</span>)</span><br><span class="line"></span><br><span class="line">    def all_push(self, msg, msg_data=None):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        推送消息，所有</span></span><br><span class="line"><span class="string">        :param msg: 消息内容，标题</span></span><br><span class="line"><span class="string">        :param msg_data: 消息数据</span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        self.push.audience = jpush.all_</span><br><span class="line">        android = jpush.android(alert=msg, priority=1, style=1, alert_type=1, extras=msg_data)</span><br><span class="line">        self.push.notification = jpush.notification(alert=msg, android=android)</span><br><span class="line">        self.push.platform = jpush.all_</span><br><span class="line">        try:</span><br><span class="line">            response = self.push.send()</span><br><span class="line">            <span class="keyword">if</span> response.__dict__[<span class="string">'status_code'</span>] == 200:</span><br><span class="line">                <span class="built_in">return</span> True</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> False</span><br><span class="line">        except Exception as e:</span><br><span class="line">            <span class="built_in">print</span> e</span><br><span class="line">            <span class="built_in">return</span> False</span><br><span class="line"></span><br><span class="line">    def user_client(self, msg, msg_data=None, uid=None):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :param msg: 消息标题</span></span><br><span class="line"><span class="string">        :param msg_data: 消息透传客户端值</span></span><br><span class="line"><span class="string">        :param uid: 用户唯一ID</span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> uid is None:</span><br><span class="line">            <span class="built_in">return</span> False</span><br><span class="line">        self.push.audience = jpush.alias(uid)</span><br><span class="line">        android = jpush.android(alert=msg, priority=1, style=1, alert_type=1, extras=msg_data)</span><br><span class="line">        self.push.notification = jpush.notification(alert=msg, android=android)</span><br><span class="line">        self.push.platform = jpush.all_</span><br><span class="line">        try:</span><br><span class="line">            response = self.push.send()</span><br><span class="line">            <span class="keyword">if</span> response.__dict__[<span class="string">'status_code'</span>] == 200:</span><br><span class="line">                <span class="built_in">return</span> True</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">return</span> False</span><br><span class="line">        except Exception as e:</span><br><span class="line">            <span class="built_in">print</span> e</span><br><span class="line">            <span class="built_in">return</span> False</span><br></pre></td></tr></table></figure>
+<h4 id="最后，感谢极光，提供的免费推送服务！！！"><a href="#最后，感谢极光，提供的免费推送服务！！！" class="headerlink" title="最后，感谢极光，提供的免费推送服务！！！"></a>最后，感谢极光，提供的免费推送服务！！！</h4>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">推送</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">极光</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/11/29/极光推送/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/12/04/python上月-本月-上周通用方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          python上月,本月,上周通用方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/13/python权重/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python权重</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -327,8 +361,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>下载文件 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="1&amp;gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。&amp;nbsp;&amp;nbsp;copy了一部分代码，源站地址忘了，还望源帖主包含">
+<meta name="keywords" content="download,下载,多线程下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="下载文件">
+<meta property="og:url" content="http://yoursite.com/2017/12/19/下载文件/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1&amp;gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。&amp;nbsp;&amp;nbsp;copy了一部分代码，源站地址忘了，还望源帖主包含">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="下载文件">
+<meta name="twitter:description" content="1&amp;gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。&amp;nbsp;&amp;nbsp;copy了一部分代码，源站地址忘了，还望源帖主包含">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,152 +164,184 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-下载文件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      下载文件
+    </h1>
+  
+
+        
+        <a href="/2017/12/19/下载文件/" class="archive-article-date">
+  	<time datetime="2017-12-19T01:03:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-gt-工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。"><a href="#1-gt-工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。" class="headerlink" title="1&gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。"></a>1&gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。</h3><p>&nbsp;&nbsp;copy了一部分代码，源站地址忘了，还望源帖主包含<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">Created on 2017年12月18日</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: nice、柠檬</span></span><br><span class="line"><span class="string">---------------------------*****---------------------------</span></span><br><span class="line"><span class="string">类说明：文件下载会根据文件大小进行调用什么方法进行下载，下载完成后返回本地文件存储路径。</span></span><br><span class="line"><span class="string">配置属性 在download_file的__init__初始方法中设置</span></span><br><span class="line"><span class="string">---------------------------*****---------------------------</span></span><br><span class="line"><span class="string">文件下载方法，调用方式：</span></span><br><span class="line"><span class="string">方式①：</span></span><br><span class="line"><span class="string">download_file(url:URL链接地址).start()</span></span><br><span class="line"><span class="string">方式②：</span></span><br><span class="line"><span class="string">downloads = download_file(url:URL链接地址)</span></span><br><span class="line"><span class="string">downloads.start()</span></span><br><span class="line"><span class="string">示例1：</span></span><br><span class="line"><span class="string">download_file('http://cdn.seegif.com/i/171120/060301249789.jpg').start()</span></span><br><span class="line"><span class="string">示例2：</span></span><br><span class="line"><span class="string">downloads = download_file('http://cdn.seegif.com/i/171120/060301249789.jpg')</span></span><br><span class="line"><span class="string">downloads.start()</span></span><br><span class="line"><span class="string">"</span><span class="string">""</span></span><br><span class="line">import threading</span><br><span class="line">import requests</span><br><span class="line">import urllib2</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载文件类</span></span><br><span class="line">class download_file(object):</span><br><span class="line">    def __init__(self, url):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        @summary: 类方法操作，链接文件下载，根据文件大小进行调用方法操作。</span></span><br><span class="line"><span class="string">        ①、大文件使用线程拆分，同时下载然后在后台拼接存储</span></span><br><span class="line"><span class="string">        ②、小文件使用普通下载</span></span><br><span class="line"><span class="string">        :param url: 需要下载的图片地址</span></span><br><span class="line"><span class="string">        :param local_path: 本地文件存储根目录</span></span><br><span class="line"><span class="string">        :param thread_num: 文件下载时允许开启的最大线程数</span></span><br><span class="line"><span class="string">        :param maximum: 文件下载使用方法临界值设定，以M为单位</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        self.url = url</span><br><span class="line">        self.local_path = <span class="string">"/Users/steve/Desktop/video_download"</span></span><br><span class="line">        self.thread_num = 4</span><br><span class="line">        self.maximum = 5</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def _file_mk_dirs(path):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        @summary: 创建本地文件路径</span></span><br><span class="line"><span class="string">        :param path: 路径地址</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> os.path.exists(path):</span><br><span class="line">            pass</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            os.makedirs(path)</span><br><span class="line"></span><br><span class="line">    def _mk_dir_(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :return: 调用方法，将链接路径分割出域名后面的路由路径，再调用创建方法进行创建</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        domain = self.url.split(<span class="string">"//"</span>)[1].split(<span class="string">'/'</span>)[0]</span><br><span class="line">        path = self.url.split(domain)[1]</span><br><span class="line">        self.file_name = self.url.split(<span class="string">'/'</span>)[-1]</span><br><span class="line">        self.local_path = self.local_path + path[0:path.rfind(<span class="string">'/'</span>)]</span><br><span class="line">        self._file_mk_dirs(self.local_path)</span><br><span class="line">        <span class="built_in">return</span> self.choice_download_methods()</span><br><span class="line"></span><br><span class="line">    def choice_download_methods(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        :return: 请求链接拿到文件大小，然后在进行下载文件</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        opener = urllib2.build_opener()</span><br><span class="line">        req = opener.open(self.url)</span><br><span class="line">        meta = req.info()</span><br><span class="line">        file_size = int(meta.getheaders(<span class="string">"Content-Length"</span>)[0])</span><br><span class="line">        <span class="keyword">if</span> file_size / 1024.0 / 1024.0 &gt; self.maximum:</span><br><span class="line">            <span class="built_in">return</span> self.download_big_file(file_size)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">return</span> self.download_small_file()</span><br><span class="line"></span><br><span class="line">    def download_big_file(self, file_size):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        下载大文件方法</span></span><br><span class="line"><span class="string">        :param file_size: 文件大小</span></span><br><span class="line"><span class="string">        :return: 本地文件路径地址，上传状态</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        try:</span><br><span class="line">            <span class="comment"># 获取文件的大小和文件名</span></span><br><span class="line">            threading.BoundedSemaphore(self.thread_num)  <span class="comment"># 允许线程个数</span></span><br><span class="line">            step = file_size // self.thread_num</span><br><span class="line">            end = -1</span><br><span class="line">            temp_file = open(self.local_path+<span class="string">'/'</span>+self.file_name, <span class="string">'w'</span>)</span><br><span class="line">            temp_file.close()</span><br><span class="line">            mtd_list = []</span><br><span class="line">            with open(self.local_path+<span class="string">'/'</span>+self.file_name, <span class="string">'rb+'</span>)as f:</span><br><span class="line">                <span class="comment"># 获得文件句柄</span></span><br><span class="line">                file_no = f.fileno()  <span class="comment"># 返回一个整型的文件描述符，可用于底层操作系统的 I/O 操作</span></span><br><span class="line">                <span class="keyword">while</span> end &lt; file_size - 1:</span><br><span class="line">                    start = end + 1</span><br><span class="line">                    end = start + step - 1</span><br><span class="line">                    <span class="keyword">if</span> end &gt; file_size:</span><br><span class="line">                        end = file_size</span><br><span class="line">                    <span class="built_in">print</span> (<span class="string">'Start:%s,end:%s'</span> % (start, end))</span><br><span class="line">                    dup = os.dup(file_no)  <span class="comment"># 复制文件句柄</span></span><br><span class="line">                    fd = os.fdopen(dup, <span class="string">'rb+'</span>, -1)</span><br><span class="line">                    t = My_big_thread(self.url, start, end, fd)</span><br><span class="line">                    t.start()</span><br><span class="line">                    mtd_list.append(t)</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> mtd_list:</span><br><span class="line">                    i.join()</span><br><span class="line">            f.close()</span><br><span class="line">            status = <span class="string">'success'</span></span><br><span class="line">        except Exception as e:</span><br><span class="line">            <span class="built_in">print</span> e</span><br><span class="line">            status = <span class="string">'error'</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'status'</span>: status,</span><br><span class="line">            <span class="string">'url'</span>: self.local_path+<span class="string">'/'</span>+self.file_name</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> data</span><br><span class="line"></span><br><span class="line">    def download_small_file(self):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        下载小文件方法</span></span><br><span class="line"><span class="string">        :return: 本地文件路径地址，上传状态</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        import urllib</span><br><span class="line">        try:</span><br><span class="line">            urllib.urlretrieve(self.url, self.local_path+<span class="string">'/'</span>+self.file_name)</span><br><span class="line">            status = <span class="string">'success'</span></span><br><span class="line">        except urllib.ContentTooShortError:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'Network conditions is not good.Reloading.'</span></span><br><span class="line">            time.sleep(1)</span><br><span class="line">            status = <span class="string">'error'</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'status'</span>: status,</span><br><span class="line">            <span class="string">'url'</span>: self.local_path+<span class="string">'/'</span>+self.file_name</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> data</span><br><span class="line"></span><br><span class="line">    def start(self):</span><br><span class="line">        <span class="built_in">return</span> self._mk_dir_()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载大文件调用方法类</span></span><br><span class="line">class My_big_thread(threading.Thread):</span><br><span class="line">    def __init__(self, url, start_pos, end_pos, f):</span><br><span class="line">        super(My_big_thread, self).__init__()</span><br><span class="line">        self.url = url</span><br><span class="line">        self.start_pos = start_pos</span><br><span class="line">        self.end_pos = end_pos</span><br><span class="line">        self.fd = f</span><br><span class="line"></span><br><span class="line">    def download(self):</span><br><span class="line">        headers = &#123;<span class="string">'Range'</span>: <span class="string">'bytes=%s-%s'</span> % (self.start_pos, self.end_pos)&#125;</span><br><span class="line">        res = requests.get(self.url, headers=headers)</span><br><span class="line">        self.fd.seek(self.start_pos)</span><br><span class="line">        self.fd.write(res.content)</span><br><span class="line">        self.fd.close()</span><br><span class="line"></span><br><span class="line">    def run(self):</span><br><span class="line">        self.download()</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">download</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">下载</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">多线程下载</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/19/下载文件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/01/08/数据库同步/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据库同步
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/06/firewall-防火墙命令相关/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">firewall-防火墙命令相关</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -327,8 +364,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

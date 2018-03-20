@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>转码问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="一、当json.loads()无法进行格式化数据，但使用evel()可以转格式，但中文乱码问题之笨办法解决方法。">
+<meta name="keywords" content="转码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转码问题">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/转码问题/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、当json.loads()无法进行格式化数据，但使用evel()可以转格式，但中文乱码问题之笨办法解决方法。">
+<meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/814DAE32-F7EE-48B5-A6EB-FA9438C37C0A.png">
+<meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/03DF24DF-4987-478E-BD16-C765212B1646.png">
+<meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/AF8C78B7-661C-4BAF-9D0D-5C39B19D4F77.png">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="转码问题">
+<meta name="twitter:description" content="一、当json.loads()无法进行格式化数据，但使用evel()可以转格式，但中文乱码问题之笨办法解决方法。">
+<meta name="twitter:image" content="http://ov62i6nl7.bkt.clouddn.com/814DAE32-F7EE-48B5-A6EB-FA9438C37C0A.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,152 +168,179 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-转码问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      转码问题
+    </h1>
+  
+
+        
+        <a href="/2017/10/11/转码问题/" class="archive-article-date">
+  	<time datetime="2017-10-11T05:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、当json-loads-无法进行格式化数据，但使用evel-可以转格式，但中文乱码问题之笨办法解决方法。"><a href="#一、当json-loads-无法进行格式化数据，但使用evel-可以转格式，但中文乱码问题之笨办法解决方法。" class="headerlink" title="一、当json.loads()无法进行格式化数据，但使用evel()可以转格式，但中文乱码问题之笨办法解决方法。"></a>一、当json.loads()无法进行格式化数据，但使用evel()可以转格式，但中文乱码问题之笨办法解决方法。</h3><a id="more"></a>
+<h4 id="①、当显示为-u6c42-u8d22-u7eff-u6bdb，则使用这一方法进行转换。"><a href="#①、当显示为-u6c42-u8d22-u7eff-u6bdb，则使用这一方法进行转换。" class="headerlink" title="①、当显示为\u6c42\u8d22\u7eff\u6bdb，则使用这一方法进行转换。"></a>①、当显示为\u6c42\u8d22\u7eff\u6bdb，则使用这一方法进行转换。</h4><p>示例：<br><img src="http://ov62i6nl7.bkt.clouddn.com/814DAE32-F7EE-48B5-A6EB-FA9438C37C0A.png" alt="yuantu"><br>使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = data.decode(<span class="string">'unicode_escape'</span>)</span><br><span class="line"><span class="built_in">print</span> data <span class="comment"># 此时为正常的中文显示。</span></span><br></pre></td></tr></table></figure>
+<h4 id="②、当显示为u95fbu9e21u8d77u821e-u5febu4e50u5411u94b1时则进行替换转码"><a href="#②、当显示为u95fbu9e21u8d77u821e-u5febu4e50u5411u94b1时则进行替换转码" class="headerlink" title="②、当显示为u95fbu9e21u8d77u821e u5febu4e50u5411u94b1时则进行替换转码"></a>②、当显示为u95fbu9e21u8d77u821e u5febu4e50u5411u94b1时则进行替换转码</h4><p>示例:<br><img src="http://ov62i6nl7.bkt.clouddn.com/03DF24DF-4987-478E-BD16-C765212B1646.png" alt="photo"><br>使用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">data, num = re.subn(<span class="string">'u'</span>, <span class="string">'\\u'</span>,data, flags=re.I) <span class="comment"># 先替换成，unicode码,num可以忽略</span></span><br><span class="line"><span class="built_in">print</span> data  <span class="comment"># 此时转成unicode 码了。但是还是无法使用，则继续需要第一种方法进行转码即可</span></span><br></pre></td></tr></table></figure><br>综合①、②方法结合的结果截图：<br><img src="http://ov62i6nl7.bkt.clouddn.com/AF8C78B7-661C-4BAF-9D0D-5C39B19D4F77.png" alt="tupian"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转码</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/10/11/转码问题/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/11/13/python权重/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          python权重
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/09/rm-命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rm_命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -327,8 +363,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

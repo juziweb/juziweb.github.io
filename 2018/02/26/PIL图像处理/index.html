@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>PIL图像处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="一、安装环境1、centos7.+2、python 2.7+">
+<meta name="keywords" content="PIL,图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PIL图像处理">
+<meta property="og:url" content="http://yoursite.com/2018/02/26/PIL图像处理/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、安装环境1、centos7.+2、python 2.7+">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="PIL图像处理">
+<meta name="twitter:description" content="一、安装环境1、centos7.+2、python 2.7+">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,36 +164,62 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-PIL图像处理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
+    <h1 class="article-title" itemprop="name">
+      PIL图像处理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
+  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h1><p>1、centos7.+<br>2、python 2.7+<br><a id="more"></a></p>
+<h1 id="二、安装准备"><a href="#二、安装准备" class="headerlink" title="二、安装准备"></a>二、安装准备</h1><p>yum安装的的驱动准备：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib zlib-devel   </span><br><span class="line">yum install libjpeg libjpeg-level   </span><br><span class="line">yum install freetype freetype-devel</span><br></pre></td></tr></table></figure></p>
+<p>下载PIL库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz <span class="comment"># 下载PIL</span></span><br><span class="line">tar xvfz Imaging-1.1.7.tar.gz  <span class="comment"># 解压PIL</span></span><br></pre></td></tr></table></figure><br>更改setup文件的值#<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCL_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">JPEG_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">ZLIB_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">TIFF_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">FREETYPE_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">LCMS_ROOT = <span class="string">"/usr/lib64/"</span></span><br></pre></td></tr></table></figure><br>再执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext -i  <span class="comment"># 检测是否正常</span></span><br></pre></td></tr></table></figure></p>
+<p>正常输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PIL 1.1.7 SETUP SUMMARY  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">version       1.1.7  </span><br><span class="line">platform      linux2 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)  </span><br><span class="line">              [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">--- TKINTER support available  </span><br><span class="line">--- JPEG support available  </span><br><span class="line">--- ZLIB (PNG/ZIP) support available  </span><br><span class="line">--- FREETYPE2 support available  </span><br><span class="line">*** LITTLECMS support not available  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">To add a missing option, make sure you have the required  </span><br><span class="line">library, and <span class="built_in">set</span> the corresponding ROOT variable <span class="keyword">in</span> the  </span><br><span class="line">setup.py script.  </span><br><span class="line">  </span><br><span class="line">To check the build, run the selftest.py script.</span><br></pre></td></tr></table></figure></p>
+<p>TKINTER和LITTLECMS 可能出现support not available情况，但是不影响PIL的使用。</p>
+<h1 id="三、安装"><a href="#三、安装" class="headerlink" title="三、安装"></a>三、安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install </span><br></pre></td></tr></table></figure>
+<h1 id="四、使用"><a href="#四、使用" class="headerlink" title="四、使用"></a>四、使用</h1><p>引用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br></pre></td></tr></table></figure><br>方法一、将第一张图放到第二张图上，JPG放到JPG/PNG上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def merge_jpg():</span><br><span class="line">    base_img = Image.open(ur<span class="string">'1.jpg'</span>)</span><br><span class="line">    region = Image.open(ur<span class="string">'2.jpg'</span>)</span><br><span class="line">    region = img_two_path</span><br><span class="line">    box = (89, 422, 661, 818)</span><br><span class="line">    <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">    图片截取框box值(依次是)</span></span><br><span class="line"><span class="string">    1：开始距离左边横向位置， </span></span><br><span class="line"><span class="string">    2：开始距离顶部竖直位置， </span></span><br><span class="line"><span class="string">    3：结束距离左边横向位置，</span></span><br><span class="line"><span class="string">    4：结束距离顶部竖直位置</span></span><br><span class="line"><span class="string">    "</span><span class="string">""</span></span><br><span class="line">    region = region.resize((box[2] - box[0], box[3] - box[1]))</span><br><span class="line">    base_img.paste(region, box)  <span class="comment"># 合成图片</span></span><br><span class="line">    <span class="built_in">return</span> base_img</span><br></pre></td></tr></table></figure><br>方法二、将第三张图放到第二张图上，PNG放到JPG/PNG上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def merge_png(imgs, box, path):</span><br><span class="line">    <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">    :param imgs: 图片流内容</span></span><br><span class="line"><span class="string">    :param box: 截取位置</span></span><br><span class="line"><span class="string">    :param path: 本地图片位置</span></span><br><span class="line"><span class="string">    :return: 返回图片流</span></span><br><span class="line"><span class="string">    "</span><span class="string">""</span></span><br><span class="line">    <span class="comment"># imgs = Image.open('2.png')</span></span><br><span class="line">    <span class="comment"># box = (86, 680, 360, 822)</span></span><br><span class="line">    <span class="comment"># path = ur'2.png'</span></span><br><span class="line">    target = Image.new(<span class="string">'RGBA'</span>, imgs.size, (0, 0, 0, 0))</span><br><span class="line">    region = Image.open(path)</span><br><span class="line">    region = region.convert(<span class="string">"RGBA"</span>)</span><br><span class="line">    region = region.resize((box[2] - box[0], box[3] - box[1]))</span><br><span class="line">    target.paste(region, box)</span><br><span class="line">    r, g, b, a = target.split()</span><br><span class="line">    imgs.paste(target, (0, 0), mask=a)</span><br><span class="line">    <span class="built_in">return</span> imgs</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,107 +235,106 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/26/PIL图像处理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/12/python装饰器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python装饰器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -327,8 +357,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

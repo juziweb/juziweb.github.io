@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Hexo</title>
+  <title>page-简单的分页写法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="前言&amp;emsp;&amp;emsp;此分页是一个简单的分页操作，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/page-简单的分页写法">
+<meta name="keywords" content="page,分页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="page-简单的分页写法">
+<meta property="og:url" content="http://yoursite.com/2017/09/13/page-简单的分页写法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此分页是一个简单的分页操作，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/page-简单的分页写法">
+<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="page-简单的分页写法">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此分页是一个简单的分页操作，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/page-简单的分页写法">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,152 +164,184 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-page-简单的分页写法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      page-简单的分页写法
+    </h1>
+  
+
+        
+        <a href="/2017/09/13/page-简单的分页写法/" class="archive-article-date">
+  	<time datetime="2017-09-13T01:45:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此分页是一个简单的分页操作，本人自行创作，如果Copy请大佬们注明出处。<br>&emsp;&emsp;<a href="http://juziweb.oschina.io/2017/09/13/page-简单的分页写法" target="_blank" rel="noopener">http://juziweb.oschina.io/2017/09/13/page-简单的分页写法</a></p>
+<a id="more"></a>
+<h4 id="1-gt-页面代码"><a href="#1-gt-页面代码" class="headerlink" title="1&gt; 页面代码"></a>1&gt; 页面代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--=================分页=================--&gt;</span><br><span class="line"> &lt;div class=<span class="string">"page"</span> id=<span class="string">"page_info"</span>&gt;</span><br><span class="line">	&lt;div class=<span class="string">"page_1"</span>&gt;&amp;nbsp;当前页数：&lt;span id=<span class="string">"currentPage"</span>&gt;&lt;/span&gt;&lt;i&gt;/&lt;/i&gt;&amp;nbsp;&lt;span id=<span class="string">"totalPage"</span>&gt;&lt;/span&gt; 页&lt;/div&gt;</span><br><span class="line">	&lt;a id=<span class="string">"page_start"</span>&gt;首页&lt;/a&gt;</span><br><span class="line">	&lt;a class=<span class="string">"span_1"</span> id=<span class="string">"toPre"</span>&gt;上一页&lt;/a&gt;</span><br><span class="line">	&lt;a class=<span class="string">"span_1"</span> id=<span class="string">"toNext"</span>&gt;下一页&lt;/a&gt;</span><br><span class="line">	&lt;a id=<span class="string">"page_end"</span>&gt;&lt;span id=<span class="string">"all_page"</span> style=<span class="string">"display:none"</span>&gt;&lt;/span&gt;尾页&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-gt-CSS样式代码"><a href="#2-gt-CSS样式代码" class="headerlink" title="2&gt; CSS样式代码"></a>2&gt; CSS样式代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/*=========================分页样式=======================*/</span><br><span class="line">.page&#123;</span><br><span class="line">    margin: 50px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.page_1&#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">    font-size: 16px;</span><br><span class="line">    color: <span class="comment">#00ABEC;</span></span><br><span class="line">    line-height: 40px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    margin: 0 5px;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.page a&#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">    color: <span class="comment">#00ABEC;</span></span><br><span class="line">    border: 1px <span class="comment">#00ABEC solid;</span></span><br><span class="line">    line-height: 40px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    margin: 0 5px;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.page_1&#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">    color: <span class="comment">#00ABEC;</span></span><br><span class="line">    border: 1px <span class="comment">#00ABEC solid;</span></span><br><span class="line">    line-height: 40px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    margin: 0 5px;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    margin-top: 1%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.span_1&#123;</span><br><span class="line">	display: inline-block;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">    color: <span class="comment">#00ABEC;</span></span><br><span class="line">    border: 1px <span class="comment">#00ABEC solid;</span></span><br><span class="line">    line-height: 40px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    margin: 0 5px;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.page a:hover&#123;</span><br><span class="line">	color: white;</span><br><span class="line">	background-color:<span class="comment">#00ABEC ;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.span_1:hover&#123;</span><br><span class="line">	color: white;</span><br><span class="line">	background-color:<span class="comment">#00ABEC ;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-gt-JS代码"><a href="#3-gt-JS代码" class="headerlink" title="3&gt; JS代码"></a>3&gt; JS代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//上一页</span><br><span class="line">    $(<span class="string">'#toPre'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">         var currentPage = parseInt($(<span class="string">'#currentPage'</span>).html());</span><br><span class="line">        <span class="keyword">if</span> (currentPage &gt; 1 )</span><br><span class="line">        var page = currentPage - 1;</span><br><span class="line">        <span class="keyword">else</span> page =currentPage;</span><br><span class="line">        query(page)</span><br><span class="line">    &#125;);</span><br><span class="line">//下一页</span><br><span class="line">    $(<span class="string">'#toNext'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">         var currentPage = parseInt($(<span class="string">'#currentPage'</span>).html());</span><br><span class="line">        var all_page = $(<span class="string">'#all_page'</span>).html();</span><br><span class="line">        <span class="keyword">if</span> (currentPage &lt; all_page )</span><br><span class="line">        var page = currentPage + 1;</span><br><span class="line">        <span class="keyword">else</span> page =currentPage;</span><br><span class="line">        query(page)</span><br><span class="line">    &#125;);</span><br><span class="line">//首页</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#page_start'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        query(1)</span><br><span class="line">     &#125;);</span><br><span class="line">//尾页</span><br><span class="line">    $(<span class="string">'#page_end'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        var all_page = $(<span class="string">'#all_page'</span>).html();</span><br><span class="line">        query(all_page)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">page</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分页</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/09/13/page-简单的分页写法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/09/13/js-本月、上个月、上周时间方法函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js-本月、上个月、上周时间方法函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/13/mysql-语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql-语法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -327,8 +364,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
