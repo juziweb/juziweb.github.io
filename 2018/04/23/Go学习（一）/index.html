@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://nicejuzi.top">
   <title>Go学习（一） | ™柠檬味の青春 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言&amp;emsp;&amp;emsp; 这是自己&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/page-简单的分页写法">
+  <meta name="description" content="前言&amp;emsp;&amp;emsp; 这是自己写了一点点公用方法，主要是时间转换还有加密，公共调用使用redis链接&amp;emsp;&amp;emsp;http://www.nicejuzi.top/2018/04/23/Go学习（一）/">
 <meta name="keywords" content="Go语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go学习（一）">
 <meta property="og:url" content="http://nicejuzi.top/2018/04/23/Go学习（一）/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
-<meta property="og:description" content="前言&amp;emsp;&amp;emsp; 这是自己&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/page-简单的分页写法">
-<meta property="og:updated_time" content="2018-04-23T09:11:40.000Z">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp; 这是自己写了一点点公用方法，主要是时间转换还有加密，公共调用使用redis链接&amp;emsp;&amp;emsp;http://www.nicejuzi.top/2018/04/23/Go学习（一）/">
+<meta property="og:updated_time" content="2018-04-23T09:26:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go学习（一）">
-<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp; 这是自己&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/page-简单的分页写法">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp; 这是自己写了一点点公用方法，主要是时间转换还有加密，公共调用使用redis链接&amp;emsp;&amp;emsp;http://www.nicejuzi.top/2018/04/23/Go学习（一）/">
   
     <link rel="alternative" href="/atom.xml" title="™柠檬味の青春 | blog" type="application/atom+xml">
   
@@ -180,8 +180,18 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp; 这是自己<br>&emsp;&emsp;<a href="http://nicejuzi.top/2017/09/13/page-简单的分页写法">http://nicejuzi.top/2017/09/13/page-简单的分页写法</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp; 这是自己写了一点点公用方法，主要是时间转换还有加密，公共调用使用redis链接<br>&emsp;&emsp;<a href="http://www.nicejuzi.top/2018/04/23/Go学习（一）/" target="_blank" rel="noopener">http://www.nicejuzi.top/2018/04/23/Go学习（一）/</a></p>
 <a id="more"></a>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>简单粗暴直接贴代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">package Util</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">	<span class="string">"crypto/md5"</span></span><br><span class="line">	<span class="string">"encoding/hex"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"github.com/garyburd/redigo/redis"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">)</span><br><span class="line">/*时间戳转时间字符串格式*/</span><br><span class="line">func ToStrDateTime(num int64) string   &#123;</span><br><span class="line">	tm := time.Unix(num, 0)</span><br><span class="line">	t :=tm.Format(<span class="string">"2006-01-02 15:04:05"</span>)</span><br><span class="line">	<span class="built_in">return</span> t</span><br><span class="line">&#125;</span><br><span class="line">/*时间戳转日期字符串格式*/</span><br><span class="line">func ToStrDate(str int64) string   &#123;</span><br><span class="line">	tm := time.Unix(str, 0)</span><br><span class="line">	t :=tm.Format(<span class="string">"2006-01-02"</span>)</span><br><span class="line">	<span class="built_in">return</span> t</span><br><span class="line">&#125;</span><br><span class="line">/*日期转时间戳*/</span><br><span class="line">func ToDateTimeStamp(str string) int64  &#123;</span><br><span class="line">	date, _:=time.ParseInLocation(<span class="string">"2006-01-02"</span>,str,  time.Local)</span><br><span class="line">	timestamp := date.Unix()</span><br><span class="line">	<span class="built_in">return</span> timestamp</span><br><span class="line">&#125;</span><br><span class="line">/*时间点转时间戳*/</span><br><span class="line">func ToTimeStamp(str string) int64  &#123;</span><br><span class="line">	date, _:=time.ParseInLocation(<span class="string">"2006-01-02 15:04:05"</span>,str,  time.Local)</span><br><span class="line">	timestamp := date.Unix()</span><br><span class="line">	<span class="built_in">return</span> timestamp</span><br><span class="line">&#125;</span><br><span class="line">/*今日零点时间戳*/</span><br><span class="line">func TodayTimeStamp() int64  &#123;</span><br><span class="line">	timeString := time.Now().Format(<span class="string">"2006-01-02"</span>)</span><br><span class="line">	<span class="built_in">return</span> ToDateTimeStamp(timeString)</span><br><span class="line">&#125;</span><br><span class="line">/*今日日期函数*/</span><br><span class="line">func TodayDate() string  &#123;</span><br><span class="line">	timeString := time.Now().Format(<span class="string">"2006-01-02"</span>)</span><br><span class="line">	<span class="built_in">return</span> timeString</span><br><span class="line">&#125;</span><br><span class="line">/*当前日期函数*/</span><br><span class="line">func NowDateTime() string  &#123;</span><br><span class="line">	timeString := time.Now().Format(<span class="string">"2006-01-02 15:04:05"</span>)</span><br><span class="line">	<span class="built_in">return</span> timeString</span><br><span class="line">&#125;</span><br><span class="line">/*当前时间戳函数*/</span><br><span class="line">func NowTimeStamp() int64  &#123;</span><br><span class="line">	timeStamp := time.Now().Unix()</span><br><span class="line">	<span class="built_in">return</span> timeStamp</span><br><span class="line">&#125;</span><br><span class="line">/*MD5加密函数*/</span><br><span class="line">func ToMD5(str string, upper bool) string &#123;</span><br><span class="line">	h := md5.New()</span><br><span class="line">	h.Write([]byte(str))</span><br><span class="line">	md5string := hex.EncodeToString(h.Sum(nil))</span><br><span class="line">	<span class="keyword">if</span> upper != <span class="literal">false</span>&#123;</span><br><span class="line">		<span class="built_in">return</span> strings.ToUpper(md5string)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> md5string</span><br><span class="line">&#125;</span><br><span class="line">/*将两个byte数组进行拼接*/</span><br><span class="line">func AddBuffer(oneBuffer []byte, twoBuffer []byte ) []byte &#123;</span><br><span class="line">	buf := bytes.NewBuffer(oneBuffer)</span><br><span class="line">	buf.Write(twoBuffer)</span><br><span class="line">	<span class="built_in">return</span> buf.Bytes()</span><br><span class="line">&#125;</span><br><span class="line">/*将N个byte数组进行拼接*/</span><br><span class="line">func AddBufferArray(arrayBuffer [][]byte ) []byte &#123;</span><br><span class="line">	buf := bytes.NewBuffer(arrayBuffer[0])</span><br><span class="line">	<span class="keyword">for</span> x := range arrayBuffer&#123;</span><br><span class="line">		<span class="keyword">if</span> x == 0&#123;<span class="built_in">continue</span>&#125;</span><br><span class="line">		buf.Write(arrayBuffer[x])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> buf.Bytes()</span><br><span class="line">&#125;</span><br><span class="line">/*建立redis链接方法函数*/</span><br><span class="line">func ConnRedis(Dbname int, Host string, port int) redis.Conn &#123;</span><br><span class="line">	hostname := Host+<span class="string">":"</span>+strconv.Itoa(port)</span><br><span class="line">	//fmt.Println(hostname)</span><br><span class="line">	c, err := redis.Dial(<span class="string">"tcp"</span>, hostname)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Connect to redis error"</span>, err)</span><br><span class="line">		<span class="built_in">return</span> nil</span><br><span class="line">	&#125;</span><br><span class="line">	//fmt.Println(<span class="string">"ccccc"</span>)</span><br><span class="line">	c.Do(<span class="string">"SELECT"</span>, Dbname)</span><br><span class="line">	<span class="built_in">return</span> c</span><br><span class="line">&#125;</span><br><span class="line">/*调用建立链接方法生成连接*/</span><br><span class="line">var ConRedis = ConnRedis(0,<span class="string">"localhost"</span>, 6379)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
       
 
       
@@ -445,22 +455,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JS日期获取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">上月</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">上周</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">本月</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PIL</a>
               </li>
              
@@ -477,15 +471,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JS日期获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">上月</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">上周</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">本月</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分页</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
