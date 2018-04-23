@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://nicejuzi.top">
   <title>Django笔记 | ™柠檬味の青春 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/14/Django笔记">
+  <meta name="description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/14/Django笔记">
 <meta name="keywords" content="django,语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django笔记">
 <meta property="og:url" content="http://nicejuzi.top/2017/09/14/Django笔记/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
-<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/14/Django笔记">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/14/Django笔记">
 <meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/django_radio.png">
-<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
+<meta property="og:updated_time" content="2018-04-23T09:13:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django笔记">
-<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/14/Django笔记">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/14/Django笔记">
 <meta name="twitter:image" content="http://ov62i6nl7.bkt.clouddn.com/django_radio.png">
   
     <link rel="alternative" href="/atom.xml" title="™柠檬味の青春 | blog" type="application/atom+xml">
@@ -182,7 +182,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。<br>&emsp;&emsp;<a href="http://juziweb.oschina.io/2017/09/14/Django笔记" target="_blank" rel="noopener">http://juziweb.oschina.io/2017/09/14/Django笔记</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此Django语法是编写时费力找到的，本人自行创作，如果Copy请大佬们注明出处。<br>&emsp;&emsp;<a href="http://nicejuzi.top/2017/09/14/Django笔记">http://nicejuzi.top/2017/09/14/Django笔记</a></p>
 <a id="more"></a>
 <h4 id="1-gt-Django后台管理界面将某个字段，改成radio方式进行单项选择"><a href="#1-gt-Django后台管理界面将某个字段，改成radio方式进行单项选择" class="headerlink" title="1&gt; Django后台管理界面将某个字段，改成radio方式进行单项选择"></a>1&gt; Django后台管理界面将某个字段，改成radio方式进行单项选择</h4><p>—-简单粗暴直接贴出代码—-</p>
 <h5 id="①、models-py文件中写入"><a href="#①、models-py文件中写入" class="headerlink" title="①、models.py文件中写入"></a>①、models.py文件中写入</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class userInfo(models.Model):</span><br><span class="line">	......</span><br><span class="line">    sex = models.IntegerField(default=1)  <span class="comment"># 性别</span></span><br><span class="line">    def __str__(self):</span><br><span class="line">        <span class="built_in">return</span> self.sex</span><br><span class="line">    <span class="comment"># 表名设置</span></span><br><span class="line">    class Meta:</span><br><span class="line">        db_table = <span class="string">'user'</span></span><br></pre></td></tr></table></figure>
@@ -453,27 +453,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,7 +481,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,6 +505,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -513,11 +517,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color3">权重</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">权重</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,19 +549,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">推送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">极光</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">推送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">极光</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://nicejuzi.top">
   <title>js-本月、上个月、上周时间方法函数 | ™柠檬味の青春 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/js-本月、上个月、上周时间方法函数">
+  <meta name="description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数">
 <meta name="keywords" content="JS日期获取,上月,上周,本月">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js-本月、上个月、上周时间方法函数">
 <meta property="og:url" content="http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
-<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/js-本月、上个月、上周时间方法函数">
-<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数">
+<meta property="og:updated_time" content="2018-04-23T09:13:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js-本月、上个月、上周时间方法函数">
-<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://juziweb.oschina.io/2017/09/13/js-本月、上个月、上周时间方法函数">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。&amp;emsp;&amp;emsp;http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数">
   
     <link rel="alternative" href="/atom.xml" title="™柠檬味の青春 | blog" type="application/atom+xml">
   
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。<br>&emsp;&emsp;<a href="http://juziweb.oschina.io/2017/09/13/js-本月、上个月、上周时间方法函数" target="_blank" rel="noopener">http://juziweb.oschina.io/2017/09/13/js-本月、上个月、上周时间方法函数</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此方法是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。<br>&emsp;&emsp;<a href="http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数">http://nicejuzi.top/2017/09/13/js-本月、上个月、上周时间方法函数</a></p>
 <a id="more"></a>
 <h4 id="1-gt-本月日期获取函数"><a href="#1-gt-本月日期获取函数" class="headerlink" title="1&gt; 本月日期获取函数"></a>1&gt; 本月日期获取函数</h4><p>—-获取月初一号至当前的日期—-<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">month</span></span>() &#123;</span><br><span class="line">    var now = new Date(); //当前日期</span><br><span class="line">    var nowDay = now.getDate(); //当前日</span><br><span class="line">    var nowMonth = now.getMonth(); //当前月</span><br><span class="line">    var nowYear = now.getFullYear(); //当前年</span><br><span class="line">    var str_Month = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> (nowMonth + 1 &lt; 9 &amp;&amp; nowMonth !== 0) &#123;</span><br><span class="line">        str_Month = <span class="string">'0'</span> + (nowMonth + 1).toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nowMonth === 0) &#123;</span><br><span class="line">        str_Month = <span class="string">'0'</span> + (nowMonth + 1).toString();</span><br><span class="line">        nowYear = nowYear - 1</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        str_Month = (nowMonth + 1).toString();</span><br><span class="line">    &#125;</span><br><span class="line">    var str_day = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> (nowDay &lt; 9) &#123;</span><br><span class="line">        str_day = <span class="string">'0'</span> + nowDay.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        str_day = nowDay.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    var month_start = nowYear + <span class="string">'-'</span> + str_Month + <span class="string">'-01'</span>;</span><br><span class="line">    var month_end = nowYear + <span class="string">'-'</span> + str_Month + <span class="string">'-'</span> + str_day;</span><br><span class="line">    window.location.href = <span class="string">'（路由地址）'</span> + month_start + <span class="string">'_'</span> + month_end  // 路由跳转函数，GET请求地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-gt-上个月日期获取函数"><a href="#2-gt-上个月日期获取函数" class="headerlink" title="2&gt; 上个月日期获取函数"></a>2&gt; 上个月日期获取函数</h4><p>—-获取上个月初一号至月末的日期—-<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">last_moth</span></span>() &#123;</span><br><span class="line">    var now = new Date(); //当前日期</span><br><span class="line">    var nowMonth = now.getMonth(); //当前月</span><br><span class="line">    var nowYear = now.getFullYear(); //当前年</span><br><span class="line">    var str_Month = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> ((nowMonth + 1) &lt; 9 &amp;&amp; nowMonth !== 0) &#123;</span><br><span class="line">        str_Month = <span class="string">'0'</span> + (nowMonth).toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (nowMonth === 0) &#123;</span><br><span class="line">        str_Month = <span class="string">'0'</span> + (nowMonth + 1).toString();</span><br><span class="line">        nowYear = nowYear - 1</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        str_Month = (nowMonth).toString();</span><br><span class="line">    &#125;</span><br><span class="line">    var years = 0;</span><br><span class="line">    var months = 0</span><br><span class="line">    <span class="keyword">if</span> (now.getMonth() === 0) &#123;</span><br><span class="line">        years = now.getFullYear();</span><br><span class="line">        months = now.getMonth()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        years = now.getFullYear() - 1;</span><br><span class="line">        months = 12</span><br><span class="line">    &#125;</span><br><span class="line">    var ss = new Date(years, months, 0);</span><br><span class="line">    var month_start = nowYear + <span class="string">'-'</span> + str_Month + <span class="string">'-01'</span>;</span><br><span class="line">    var month_end = nowYear + <span class="string">'-'</span> + str_Month + <span class="string">'-'</span> + ss.getDate()</span><br><span class="line">    window.location.href = <span class="string">'（路由地址）'</span> + month_start + <span class="string">'_'</span> + month_end // 路由跳转函数，GET请求地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -459,27 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,7 +487,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,6 +511,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -519,11 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color3">权重</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">权重</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,19 +555,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">推送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">极光</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">推送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">极光</a>
               </li>
              
               <li class="article-tag-list-item">
