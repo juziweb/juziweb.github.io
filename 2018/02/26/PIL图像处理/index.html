@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://nicejuzi.top/2018/02/26/PIL图像处理/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
 <meta property="og:description" content="一、安装环境1、centos7.+2、python 2.7+">
-<meta property="og:updated_time" content="2018-03-20T08:54:51.000Z">
+<meta property="og:updated_time" content="2018-04-24T08:03:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PIL图像处理">
 <meta name="twitter:description" content="一、安装环境1、centos7.+2、python 2.7+">
@@ -182,7 +182,7 @@ var _hmt = _hmt || [];
       
         <h1 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h1><p>1、centos7.+<br>2、python 2.7+<br><a id="more"></a></p>
 <h1 id="二、安装准备"><a href="#二、安装准备" class="headerlink" title="二、安装准备"></a>二、安装准备</h1><p>yum安装的的驱动准备：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib zlib-devel   </span><br><span class="line">yum install libjpeg libjpeg-level   </span><br><span class="line">yum install freetype freetype-devel</span><br></pre></td></tr></table></figure></p>
-<p>下载PIL库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz <span class="comment"># 下载PIL</span></span><br><span class="line">tar xvfz Imaging-1.1.7.tar.gz  <span class="comment"># 解压PIL</span></span><br></pre></td></tr></table></figure><br>更改setup文件的值#<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCL_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">JPEG_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">ZLIB_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">TIFF_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">FREETYPE_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">LCMS_ROOT = <span class="string">"/usr/lib64/"</span></span><br></pre></td></tr></table></figure><br>再执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext -i  <span class="comment"># 检测是否正常</span></span><br></pre></td></tr></table></figure></p>
+<p>下载PIL库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://effbot.org/media/downloads/Imaging-1.1.7.tar.gz <span class="comment"># 下载PIL</span></span><br><span class="line">tar xvfz Imaging-1.1.7.tar.gz  <span class="comment"># 解压PIL</span></span><br></pre></td></tr></table></figure><br>更改setup文件的值#<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCL_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">JPEG_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">ZLIB_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">TIFF_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">FREETYPE_ROOT = <span class="string">"/usr/lib64/"</span>  </span><br><span class="line">LCMS_ROOT = <span class="string">"/usr/lib64/"</span></span><br></pre></td></tr></table></figure><br>再执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext -i  <span class="comment"># 检测是否正常</span></span><br></pre></td></tr></table></figure></p>
 <p>正常输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PIL 1.1.7 SETUP SUMMARY  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">version       1.1.7  </span><br><span class="line">platform      linux2 2.6.6 (r266:84292, Jan 22 2014, 09:42:36)  </span><br><span class="line">              [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">--- TKINTER support available  </span><br><span class="line">--- JPEG support available  </span><br><span class="line">--- ZLIB (PNG/ZIP) support available  </span><br><span class="line">--- FREETYPE2 support available  </span><br><span class="line">*** LITTLECMS support not available  </span><br><span class="line">--------------------------------------------------------------------  </span><br><span class="line">To add a missing option, make sure you have the required  </span><br><span class="line">library, and <span class="built_in">set</span> the corresponding ROOT variable <span class="keyword">in</span> the  </span><br><span class="line">setup.py script.  </span><br><span class="line">  </span><br><span class="line">To check the build, run the selftest.py script.</span><br></pre></td></tr></table></figure></p>
 <p>TKINTER和LITTLECMS 可能出现support not available情况，但是不影响PIL的使用。</p>
 <h1 id="三、安装"><a href="#三、安装" class="headerlink" title="三、安装"></a>三、安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install </span><br></pre></td></tr></table></figure>
@@ -452,7 +452,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,11 +468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,18 +477,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">page</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分页</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +496,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">page</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分页</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -516,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">权重</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color3">权重</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,6 +536,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">脚本</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">download</a>
               </li>
              
@@ -545,14 +553,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程下载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">脚本</a>
               </li>
              
               <li class="article-tag-list-item">
