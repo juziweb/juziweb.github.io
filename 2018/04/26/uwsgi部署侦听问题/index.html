@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nicejuzi.top">
-  <title>™柠檬味の青春 | blog</title>
+  <title>uwsgi部署侦听问题 | ™柠檬味の青春 | blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="™柠檬味の青春 | blog">
-<meta property="og:url" content="http://nicejuzi.top/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；">
+<meta name="keywords" content="uwsgi,部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uwsgi部署侦听问题">
+<meta property="og:url" content="http://nicejuzi.top/2018/04/26/uwsgi部署侦听问题/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；">
+<meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/blog/uwsgi.png">
+<meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/blog/sysctl.png">
+<meta property="og:updated_time" content="2018-04-26T08:31:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="™柠檬味の青春 | blog">
+<meta name="twitter:title" content="uwsgi部署侦听问题">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；">
+<meta name="twitter:image" content="http://ov62i6nl7.bkt.clouddn.com/blog/uwsgi.png">
   
     <link rel="alternative" href="/atom.xml" title="™柠檬味の青春 | blog" type="application/atom+xml">
   
@@ -155,16 +163,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-uwsgi部署侦听问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-uwsgi部署侦听问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/uwsgi部署侦听问题/">uwsgi部署侦听问题</a>
+    <h1 class="article-title" itemprop="name">
+      uwsgi部署侦听问题
     </h1>
   
 
@@ -178,12 +184,43 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>&emsp;&emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；</p>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2018/04/26/uwsgi部署侦听问题/">more</a> -->
-        
+<a id="more"></a>
+<h5 id="现象："><a href="#现象：" class="headerlink" title="现象："></a>现象：</h5><blockquote>
+<p>出现报错日志显示如下：<br><img src="http://ov62i6nl7.bkt.clouddn.com/blog/uwsgi.png" alt="meixi"><br>主要是出现了类似日志：<br>Listen queue size is greater than the system max net.core.somaxconn (128).</p>
+</blockquote>
+<h5 id="解决方法如下："><a href="#解决方法如下：" class="headerlink" title="解决方法如下："></a>解决方法如下：</h5><blockquote>
+<p>方法一：<br>更改uwsgi配置，把uwsgi侦听给改小，改成&lt;=128；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">master = <span class="literal">true</span></span><br><span class="line">vhost = <span class="literal">true</span></span><br><span class="line">no-site = <span class="literal">true</span></span><br><span class="line">vacuum = <span class="literal">true</span></span><br><span class="line">chmod-socket = 666</span><br><span class="line">daemonize = /home/www/image/logs/uwsgi.log</span><br><span class="line">socket = /home/www/image/image.sock</span><br><span class="line">venv = /home/www/image/venv/</span><br><span class="line"><span class="built_in">chdir</span> = /home/www/image</span><br><span class="line">module = image</span><br><span class="line">wsgi-file = image_uwsgi.py</span><br><span class="line">callable = app</span><br><span class="line">pidfile = /tmp/uwsgi_image.pid</span><br><span class="line">processes = 8</span><br><span class="line">threads = 32</span><br><span class="line">listen = 128  <span class="comment"># 改成小于等于128</span></span><br><span class="line">stats = 127.0.0.1:8081</span><br></pre></td></tr></table></figure><br>方法一的问题虽然是可以解决，而且uwsgi也可以正常启动了，但是改成侦听128,有点偏小，浪费了太多的服务器性能。（PS:为什么是128，为什么还会浪费性能？原因如下，net.core.somaxconn是Linux中的一个kernel参数，表示socket监听（listen）的backlog上限。什么是backlog呢？backlog就是socket的监听队列，当一个请求（request）尚未被处理或建立时，他会进入backlog。而socket server可以一次性处理backlog中的所有请求，处理后的请求不再位于监听队列中。当server处理请求较慢，以至于监听队列被填满后，新来的请求会被拒绝。而这个socket队列大小影响到了uwsgi的侦听，因此uwsgi也和linux挂钩，最大也只支持128。因此设置128+的时候会出现报错，无法启动uwsgi，虽然设置了128以下，但是服务器能处理的速度远远大于并发128。于是乎就找到了第二种解决办法，更改内核侦听数目，以扩大uwsgi侦听)<br>方法二：<br>更改内核侦听最大数目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim打开文件</span></span><br><span class="line">vim  /etc/sysctl.conf</span><br><span class="line">net.core.somaxconn = 30000 <span class="comment"># 最后一行加入这句</span></span><br><span class="line"><span class="comment"># 最后保存退出，执行</span></span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><br>例如：<br><img src="http://ov62i6nl7.bkt.clouddn.com/blog/sysctl.png" alt="meixi"></p>
+</blockquote>
+<p>最后愉快的更改listen参数值,小于30000即可，一般设置12888</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ov62i6nl7.bkt.clouddn.com/juzi_pay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -207,16 +244,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/uwsgi部署侦听问题/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://nicejuzi.top/2018/04/26/uwsgi部署侦听问题/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/23/Go学习（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go学习（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -236,757 +332,14 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-Go学习（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/23/Go学习（一）/">Go学习（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/23/Go学习（一）/" class="archive-article-date">
-  	<time datetime="2018-04-23T09:08:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp; 这是自己写了一点点公用方法，主要是时间转换还有加密，公共调用使用redis链接<br>&emsp;&emsp;<a href="http://www.nicejuzi.top/2018/04/23/Go学习（一）/" target="_blank" rel="noopener">http://www.nicejuzi.top/2018/04/23/Go学习（一）/</a></p>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2018/04/23/Go学习（一）/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Go语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/23/Go学习（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PIL图像处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/26/PIL图像处理/">PIL图像处理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/26/PIL图像处理/" class="archive-article-date">
-  	<time datetime="2018-02-26T07:27:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h1><p>1、centos7.+<br>2、python 2.7+<br>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2018/02/26/PIL图像处理/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PIL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/26/PIL图像处理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python装饰器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/12/python装饰器/">python装饰器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/12/python装饰器/" class="archive-article-date">
-  	<time datetime="2018-02-12T09:36:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>&emsp;&emsp; 无论是flask还是django，写路由验证签名的时候，用装饰器会比调用方法看起来要简洁些。经常要用到这个装饰器的知识，所以就写了这个文章；<br>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2018/02/12/python装饰器/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/12/python装饰器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据库同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/08/数据库同步/">数据库同步</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/08/数据库同步/" class="archive-article-date">
-  	<time datetime="2018-01-08T01:33:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-gt-在工作中经常会出现迁移数据库，但是手动迁移又会有诸多数据不一致问题。"><a href="#1-gt-在工作中经常会出现迁移数据库，但是手动迁移又会有诸多数据不一致问题。" class="headerlink" title="1&gt;在工作中经常会出现迁移数据库，但是手动迁移又会有诸多数据不一致问题。"></a>1&gt;在工作中经常会出现迁移数据库，但是手动迁移又会有诸多数据不一致问题。</h4><p>&nbsp;&nbsp;废话不多说直接贴代码！<br>&nbsp;&nbsp;PS：运行环境python 2.7</p>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2018/01/08/数据库同步/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyhton数据库同步</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/08/数据库同步/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-下载文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/下载文件/">下载文件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/19/下载文件/" class="archive-article-date">
-  	<time datetime="2017-12-19T01:03:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-gt-工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。"><a href="#1-gt-工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。" class="headerlink" title="1&gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。"></a>1&gt; 工作中经常爬取资源，时常要用到下载。所以在网上找了找下载文件的部分代码。然后结合了之前的下载，写了一个简单的下载文件类。</h3><p>&nbsp;&nbsp;copy了一部分代码，源站地址忘了，还望源帖主包含<br>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2017/12/19/下载文件/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">download</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">下载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">多线程下载</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/19/下载文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-firewall-防火墙命令相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/06/firewall-防火墙命令相关/">firewall-防火墙命令相关</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/06/firewall-防火墙命令相关/" class="archive-article-date">
-  	<time datetime="2017-12-06T10:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;本文是一些简单的防火墙操作,工作中记录使用到的<br>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2017/12/06/firewall-防火墙命令相关/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">firewall</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/06/firewall-防火墙命令相关/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python上月-本月-上周通用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/04/python上月-本月-上周通用方法/">python上月,本月,上周通用方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/04/python上月-本月-上周通用方法/" class="archive-article-date">
-  	<time datetime="2017-12-04T12:50:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;此类函数是一个简单的日期函数，本人自行创作，如果Copy请大佬们注明出处。喜欢的可以进行收藏！<br>&emsp;&emsp;之前有写一个js的日期函数，刚好在写后台的时候又用到了上周，上月，本月，所有就又写了个函数，后期可能还会加上近七天，30天的日期方法</p>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2017/12/04/python上月-本月-上周通用方法/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">上月</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">上周</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">本月</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日期</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/04/python上月-本月-上周通用方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-极光推送" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/极光推送/">极光推送</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/29/极光推送/" class="archive-article-date">
-  	<time datetime="2017-11-29T08:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-gt-在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。"><a href="#1-gt-在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。" class="headerlink" title="1&gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。"></a>1&gt; 在写APP的时候，经常使用推送，因此此次采用极光的推送，写了一个公用类。</h3><p>&nbsp;&nbsp;此推送方法是一个简单的类，本人自行创作，如果Copy请大佬们注明出处，谢谢！<br>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2017/11/29/极光推送/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">推送</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">极光</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/29/极光推送/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python权重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/13/python权重/">python权重</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/13/python权重/" class="archive-article-date">
-  	<time datetime="2017-11-13T09:03:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>&emsp;&emsp;工作的时候遇到了一个关于权重的问题，网上查了之后，有一些解决方法，从别人那学习学习，然后再自己重构。对于实际工作，更多的是序言在sql语句查询之后对结果的权重进行处理。所以就写了简单的一个类，方便使用。</p>
-        
-         <!-- 注释more -->
-         <!-- <a class="article-more-a" href="/2017/11/13/python权重/">more</a> -->
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">权重</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/13/python权重/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1016,8 +369,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
