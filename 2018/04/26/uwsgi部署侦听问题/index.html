@@ -17,7 +17,7 @@
 <meta property="og:description" content="&amp;emsp;&amp;emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；">
 <meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/blog/uwsgi.png">
 <meta property="og:image" content="http://ov62i6nl7.bkt.clouddn.com/blog/sysctl.png">
-<meta property="og:updated_time" content="2018-04-26T08:34:02.000Z">
+<meta property="og:updated_time" content="2018-04-26T08:36:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="uwsgi部署侦听问题">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;部署uwsgi的时候，发现一个问题。那就是启动uwsgi的时候，设置侦听数目过高总会发现有报错，于是记录一下；">
@@ -188,10 +188,10 @@ var _hmt = _hmt || [];
 <h5 id="现象："><a href="#现象：" class="headerlink" title="现象："></a>现象：</h5><blockquote>
 <p>出现报错日志显示如下：<br><img src="http://ov62i6nl7.bkt.clouddn.com/blog/uwsgi.png" alt="meixi"><br>主要是出现了类似日志：<br>Listen queue size is greater than the system max net.core.somaxconn (128).</p>
 </blockquote>
-<h5 id="解决方法如下："><a href="#解决方法如下：" class="headerlink" title="解决方法如下："></a>解决方法如下：</h5><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><blockquote>
+<h3 id="解决方法一："><a href="#解决方法一：" class="headerlink" title="解决方法一："></a>解决方法一：</h3><blockquote>
 <p>更改uwsgi配置，把uwsgi侦听给改小，改成&lt;=128；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">master = <span class="literal">true</span></span><br><span class="line">vhost = <span class="literal">true</span></span><br><span class="line">no-site = <span class="literal">true</span></span><br><span class="line">vacuum = <span class="literal">true</span></span><br><span class="line">chmod-socket = 666</span><br><span class="line">daemonize = /home/www/image/logs/uwsgi.log</span><br><span class="line">socket = /home/www/image/image.sock</span><br><span class="line">venv = /home/www/image/venv/</span><br><span class="line"><span class="built_in">chdir</span> = /home/www/image</span><br><span class="line">module = image</span><br><span class="line">wsgi-file = image_uwsgi.py</span><br><span class="line">callable = app</span><br><span class="line">pidfile = /tmp/uwsgi_image.pid</span><br><span class="line">processes = 8</span><br><span class="line">threads = 32</span><br><span class="line">listen = 128  <span class="comment"># 改成小于等于128</span></span><br><span class="line">stats = 127.0.0.1:8081</span><br></pre></td></tr></table></figure><br>方法一的问题虽然是可以解决，而且uwsgi也可以正常启动了，但是改成侦听128,有点偏小，浪费了太多的服务器性能。（PS:为什么是128，为什么还会浪费性能？原因如下，net.core.somaxconn是Linux中的一个kernel参数，表示socket监听（listen）的backlog上限。什么是backlog呢？backlog就是socket的监听队列，当一个请求（request）尚未被处理或建立时，他会进入backlog。而socket server可以一次性处理backlog中的所有请求，处理后的请求不再位于监听队列中。当server处理请求较慢，以至于监听队列被填满后，新来的请求会被拒绝。而这个socket队列大小影响到了uwsgi的侦听，因此uwsgi也和linux挂钩，最大也只支持128。因此设置128+的时候会出现报错，无法启动uwsgi，虽然设置了128以下，但是服务器能处理的速度远远大于并发128。于是乎就找到了第二种解决办法，更改内核侦听数目，以扩大uwsgi侦听)</p>
 </blockquote>
-<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><blockquote>
+<h3 id="解决方法二："><a href="#解决方法二：" class="headerlink" title="解决方法二："></a>解决方法二：</h3><blockquote>
 <p>更改内核侦听最大数目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim打开文件</span></span><br><span class="line">vim  /etc/sysctl.conf</span><br><span class="line">net.core.somaxconn = 30000 <span class="comment"># 最后一行加入这句</span></span><br><span class="line"><span class="comment"># 最后保存退出，执行</span></span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><br>例如：<br><img src="http://ov62i6nl7.bkt.clouddn.com/blog/sysctl.png" alt="meixi"></p>
 </blockquote>
 <p>最后愉快的更改listen参数值,小于30000即可，一般设置12888</p>
@@ -443,15 +443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,14 +471,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JS日期获取</a>
               </li>
              
@@ -492,6 +484,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">本月</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">firewall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,23 +511,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日期</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">权重</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日期</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">部署</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +535,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">脚本</a>
+                <a href="javascript:void(0)" class="js-tag color3">部署</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,15 +555,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">推送</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">极光</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">脚本</a>
               </li>
              
               <li class="article-tag-list-item">
