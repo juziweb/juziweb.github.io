@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://nicejuzi.top/2018/04/26/git基本操作/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
 <meta property="og:description" content="前言：有时候会需要使用命令进行提交git，写个笔记记录下。">
-<meta property="og:updated_time" content="2018-04-26T09:07:46.000Z">
+<meta property="og:updated_time" content="2018-04-26T09:27:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基本操作">
 <meta name="twitter:description" content="前言：有时候会需要使用命令进行提交git，写个笔记记录下。">
@@ -182,7 +182,10 @@ var _hmt = _hmt || [];
       
         <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>有时候会需要使用命令进行提交git，写个笔记记录下。</p>
 <a id="more"></a>
-<p>安装git和添加git的ssh登录就不多说了，网上百度一大堆[码云添加ssh][<a href="http://git.mydoc.io/?t=154712]。" target="_blank" rel="noopener">http://git.mydoc.io/?t=154712]。</a></p>
+<p>安装git和添加git的ssh登录就不多说了，网上百度一大堆,例如：<a href="http://git.mydoc.io/?t=154712" target="_blank" rel="noopener">码云添加ssh</a>。</p>
+<p>添加本地仓库：<br>步骤一：<br>cd /你的文件目录<br>步骤二：<br>git init   # 初始化你的仓库地址<br>步骤三：<br>touch  文件名<br>git add .  # 将文件添加到本地仓<br>步骤四：<br>git commit -m ‘first commit’  # 本地提交记录生成<br>步骤五：<br>git remote add origin <a href="mailto:git@gitee.com" target="_blank" rel="noopener">git@gitee.com</a>:xxx/xxx.git  #xxx是你的文件线上git地址<br>步骤六：<br>git push origin master  # 提交到线上仓库<br>PS：如果不成功则先执行如下，再重复第六步<br>git pull origin master # 拉取</p>
+<p>本地仓库代码有更改怎么查看：<br>git status # 查看本地是否有更改代码<br>如果有显示更改：<br>则可以执行：<br>git add .  # 添加更改,（指定文件则吧后面的.换成文件路径）<br>git commit -m “add git基本操作” # 再执行添加记录描述<br>git push origin master  # 最后提交到线上仓库</p>
+<p>基本提交操作到此结束，回退啥的后续再添加。</p>
 
       
 
@@ -439,15 +442,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,14 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">版本控制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">firewall</a>
               </li>
              
@@ -475,15 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">page</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分页</a>
+                <a href="javascript:void(0)" class="js-tag color5">版本控制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,15 +494,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">page</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分页</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日期</a>
+                <a href="javascript:void(0)" class="js-tag color3">权重</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">权重</a>
+                <a href="javascript:void(0)" class="js-tag color3">日期</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +570,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">转码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转码</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
