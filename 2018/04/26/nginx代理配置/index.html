@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://nicejuzi.top/2018/04/26/nginx代理配置/index.html">
 <meta property="og:site_name" content="™柠檬味の青春 | blog">
 <meta property="og:description" content="前言&amp;nbsp;&amp;nbsp;nginx服务器部署是现在目前使用比较广泛使用的，此文章仅仅只是皮毛，简单使用nginx做一些简单的负载均衡，反向代理配置，nginx+uwsgi+flask部署。">
-<meta property="og:updated_time" content="2018-04-26T12:19:05.000Z">
+<meta property="og:updated_time" content="2018-04-26T12:20:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx代理配置">
 <meta name="twitter:description" content="前言&amp;nbsp;&amp;nbsp;nginx服务器部署是现在目前使用比较广泛使用的，此文章仅仅只是皮毛，简单使用nginx做一些简单的负载均衡，反向代理配置，nginx+uwsgi+flask部署。">
@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
 <p>负载均衡代理server写法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">upstream mytomcat &#123;</span><br><span class="line">    server 127.0.0.1:8081;   	<span class="comment"># server 后面接服务器地址(可同网段，也可跨网段)：端口；</span></span><br><span class="line">    server 127.0.0.1:8082;  	<span class="comment"># server 后面接服务器地址(可同网段，也可跨网段)：端口；</span></span><br><span class="line">    server 127.0.0.1:8083;  	<span class="comment"># server 后面接服务器地址(可同网段，也可跨网段)：端口；</span></span><br><span class="line">    server 127.0.0.1:8084;   	<span class="comment"># server 后面接服务器地址(可同网段，也可跨网段)：端口；</span></span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 8080;      			<span class="comment"># 代理主端口 </span></span><br><span class="line">    server_name serverIP;     	<span class="comment"># 服务器IP地址，或者域名地址</span></span><br><span class="line">    location / &#123;        </span><br><span class="line">       proxy_pass http://mytomcat; <span class="comment">#使用mytomcat分配规则，即刚自定义添加的子server节点</span></span><br><span class="line">       proxy_set_header  Host            <span class="variable">$host</span>;  <span class="comment"># 转发主机请求</span></span><br><span class="line">       proxy_set_header  X-Real-IP        <span class="variable">$remote_addr</span>;  <span class="comment"># 转发源IP</span></span><br><span class="line">       proxy_set_header  X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>; <span class="comment"># 转发目的IP</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>上面这种用于服务器配置都是一致，均衡分配请求；还可以如下，设置权重进行分配请求,server配置一致；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">upstream mytomcat &#123;	</span><br><span class="line">    ip_hash;  	<span class="comment"># 如果有session回话机制，则需要使用nginx配置中加入ip_hash策略</span></span><br><span class="line">    fair; 		<span class="comment"># 如果没有接口状态哪些，可不写或者使用fair策略</span></span><br><span class="line">    <span class="comment"># 以上都不使用则，全部注释即可；</span></span><br><span class="line">       server 127.0.0.1:8081 weight=1;  	</span><br><span class="line">       server 127.0.0.1:8082 weight=2;</span><br><span class="line">       server 127.0.0.1:8083 weight=3;</span><br><span class="line">       server 127.0.0.1:8084 weight=4;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h5 id="常见写法三："><a href="#常见写法三：" class="headerlink" title="常见写法三："></a>常见写法三：</h5><blockquote>
-<p>转发uwsgi代理server写法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 8080;				<span class="comment"># 侦听端口</span></span><br><span class="line">        server_name serverIP;     	<span class="comment"># 服务器IP地址，或者域名地址</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            uwsgi_param   Host                 <span class="variable">$host</span>;</span><br><span class="line">            uwsgi_param   X-Real-IP            <span class="variable">$remote_addr</span>;</span><br><span class="line">            uwsgi_param   X-Forwarded-For      <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            uwsgi_param   X-Forwarded-Proto    <span class="variable">$http_x_forwarded_proto</span>;</span><br><span class="line">			</span><br><span class="line">            include uwsgi_params;	<span class="comment"># 使用uwsgi模块</span></span><br><span class="line">            uwsgi_pass  unix:///xx/xx.sock;  <span class="comment"># http请求转发指向uwsgi的应用</span></span><br><span class="line">            <span class="comment"># 后面格式固定写法为   unix:///文件路径/uwsgi.sock文件;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>转发uwsgi代理server写法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 8080;				<span class="comment"># 侦听端口</span></span><br><span class="line">        server_name serverIP;     	<span class="comment"># 服务器IP地址，或者域名地址</span></span><br><span class="line">        location / &#123;</span><br><span class="line">            uwsgi_param   Host                 <span class="variable">$host</span>;</span><br><span class="line">            uwsgi_param   X-Real-IP            <span class="variable">$remote_addr</span>;</span><br><span class="line">            uwsgi_param   X-Forwarded-For      <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">            uwsgi_param   X-Forwarded-Proto    <span class="variable">$http_x_forwarded_proto</span>;</span><br><span class="line">			</span><br><span class="line">            include uwsgi_params;	<span class="comment"># 使用uwsgi模块</span></span><br><span class="line">            uwsgi_pass  unix:///xx/xx.sock;  <span class="comment"># http请求转发指向uwsgi的应用</span></span><br><span class="line">            <span class="comment"># 后面格式固定写法为   unix:///文件路径/uwsgi.sock文件;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>以上如有错误，可以QQ联系交流；</p>
 </blockquote>
 
       
@@ -446,15 +446,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Go语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,35 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PIL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">版本控制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,6 +503,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">本月</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">部署</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,10 +546,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -559,6 +555,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">uwsgi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,19 +574,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">推送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">极光</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pyhton数据库同步</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">推送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">极光</a>
               </li>
              
               <li class="article-tag-list-item">
